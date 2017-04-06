@@ -1,7 +1,7 @@
 angular.module('app').service('monsterService', function($http){
 
 
-var monSorted = [2,4,6,8,10]
+var monSorted = [150, 325, 165, 183, 216, 169, 57, 139, 156, 259]
 
 function getRandom() {
  return monSorted[Math.floor(Math.random() * monSorted.length)]

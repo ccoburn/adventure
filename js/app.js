@@ -9,20 +9,25 @@ angular.module('app', ['ui.router'])
     templateUrl: 'home.html',
     controller: 'homeCtrl'
   })
-  .state('cleric', {
-    url: "/cleric",
-    templateUrl: './cleric/views/clericMain.html',
-    controller: 'clericMainCtrl'
+  .state('none', {
+    url: "/none/:id",
+    templateUrl: './views/none.html',
+    controller: 'noOptionsCtrl'
   })
-  .state('druid', {
-    url: "/druid",
-    templateUrl: './druid/views/druidMain.html',
-    controller: 'druidMainCtrl'
+  .state('two', {
+    url: "/two/:id",
+    templateUrl: './views/two.html',
+    controller: 'twoOptionsCtrl'
   })
-  .state('wizard', {
-    url: "/wizard",
-    templateUrl: './wizard//views/wizMain.html',
-    controller: 'wizMainCtrl'
+  .state('three', {
+    url: "/three/:id",
+    templateUrl: './views/three.html',
+    controller: 'threeOptionsCtrl'
+  })
+  .state('fight', {
+    url: '/fight',
+    templateUrl: './views/fight.html',
+    controller: 'fightCtrl'
   })
 
 

@@ -1,6 +1,15 @@
+<header class='header'>
+	<div class="village-box">
+		<h2 class='title'>Village Adventure</h2>
+		<h3 class='sub-title'>an interactive story</h3>
+	</div>
+</header>
+
+<div class="wrapper">
+
 <div class="storyb">
 	<p>This is an interactive story. Click the button to begin</p>
-	<button type="button" name="button" ng-click='earthquake(); wakeUp=true'>Start your adventure</button>
+	<button type="button" name="button" ng-click= 'wakeUp=true'>Start your adventure</button>
 
 </div>
 <div class="story" ng-show='wakeUp'>
@@ -22,12 +31,13 @@
 	<br>
 	<p>Master Perryl informs you that you have three options and urges you to choose wisely. Talos, god of storms, has made known to his devotees that he seeks a cleric at his temple south of your village. There you would learn to channel his power. Since the prophesy, the druids to the east have had an open invitation to train a dedicated individual in their ways. The wizards at Bryce's school offered in their letter to train another champion in his stead. You would head north immediately. Two years is not long, but Master Perryl has faith in you. Where will you go?</p>
 	<div class="choices-box">
-		<button type="button" name="button" ui-sref='cleric'>South to Talos's temple</button>
-		<button type="button" name="button" ui-sref='druid'>East to the druids</button>
-		<button type="button" name="button" ui-sref='wizard'>North to the wizards</button>
+		<button type="button" name="button" ui-sref="three({id: 'c1_3o'})">South to Talos's temple</button>
+		<button type="button" name="button" ui-sref="three({id: 'd1_3o'})">East to the druids</button>
+		<button type="button" name="button" ui-sref="three({id: 'w1_3o'})">North to the wizards</button>
   </div>
 
 <br>
 <br>
 <br>
 <br>
+</div>
