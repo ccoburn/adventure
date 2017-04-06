@@ -1,0 +1,76 @@
+body {
+  padding: 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #8f8f8d;
+}
+
+button {
+  margin-top: 10px;
+  border: none;
+  background-color: #0e2b78;
+  border-radius: 12px;
+  color: white;
+  height: 30px;
+  transition-duration: .2s;
+
+}
+button:hover {
+  background-color: #300c50;
+  animation-name: pulse;
+  animation-duration: .4s;
+}
+
+.header {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.village-box {
+  width: 75%;
+  height: 300px;
+  background: url('../Village.jpg') center no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.title {
+  font-size: 85px;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+
+.sub-title {
+  font-size: 45px;
+  text-align: center;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+
+}
+
+.story {
+  width: 70%
+  margin-bottom: 15px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.storyb {
+  margin-bottom: 15px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.choices-box {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}

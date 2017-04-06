@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+	<title>Adventure</title>
+
+<link rel="stylesheet" type="text/css" href="./styles/reset.css">
+<link rel="stylesheet" type="text/css" href="./styles/main.css">
+<link rel="stylesheet" type="text/css" href="./styles/animate.css">
+<link rel="stylesheet" type="text/css" href="./styles/shake.css">
+</head>
+<body>
+<header class='header'>
+	<div class="village-box">
+		<h2 class='title'>Village Adventure</h2>
+		<h3 class='sub-title'>an interactive story</h3>
+	</div>
+</header>
+
+<ui-view></ui-view>
+
+
+
+
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js'></script>
+<script src='app.js'></script>
+<script src='homeCtrl.js'></script>
+<script src='./services/ClassService.js'></script>
+<script src='./services/MonsterService.js'></script>
+<script src='./services/SpellsService.js'></script>
+<script src='./services/RollService.js'></script>
+<script src='./cleric/js/clericMainCtrl.js'></script>
+<script src='./druid/js/druidMainCtrl.js'></script>
+<script src='./wizard/js/wizMainCtrl.js'></script>
+
+</body>
+</html>
