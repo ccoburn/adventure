@@ -1,4 +1,42 @@
-<h1>You must fight a {{monster.name}}</h1>
+<h1>{{chapter.character}} {{stats.character}}</h1>
 
+<h1>You are attacked by a {{monster.name}}</h1>
+<h3>Armor: {{monster.armor_class}}</h3>
+<h3>Strength: {{monster.strength}}</h3>
+<h3>Hit Points: {{monster.hit_points}}</h3>
+<h3>Dexterity: {{monster.dexterity}}</h3>
+<h3>Hit Dice: {{monster.hit_dice}}</h3>
+<br>
+<br>
+<h1>{{stats.character}}</h1>
+<h3>AC: {{stats.armor_class}}</h3>
+<h3>Hit Points: {{stats.hit_points}}</h3>
+<button type="button" name="button" ng-model="fightBttn" ng-disabled="fightBttn" ng-click="fight(); spells=true; fightBttn=true">Start fight</button>
+<h1>Here we go</h1>
+<br>
+<h3>{{result1}}</h3>
+<h3>{{turn}}</h3>
+
+<br>
+<br>
+<div class="choices-box" ng-show="spells">
+  <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); spin=true; fightSp1(); the20=true; once=true; dice=true">{{stats.spell1}}</button>
+  <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp2(); the20=true; spin=true; once=true; dice=true">{{stats.spell2}}</button>
+  <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp3(); the20=true; spin=true; once=true; dice=true">{{stats.spell3}}</button>
+</div>
 
 <roll-directive></roll-directive>
+
+<h1>{{result2}}</h1>
+<br>
+<br>
+<h2 ng-show="won">You heal your wounds and rest from the battle.</h2>
+<div class="choices-box">
+  <button type="button" name="button" ui-sref='home' ng-show="died">Start Over</button>
+  <button type="button" name="button" ng-show="won" ng-click="options(); oneOption=true">Continue Journey</button>
+</div>
+
+<div class="choices-box">
+  <button type="button" name="button" ui-sref='{{chapter.button1lnk}}' ng-show="oneOption">{{chapter.button1txt}}</button>
+<button type="button" name="button" ui-sref='{{chapter.button2lnk}}' ng-show="twoOptions">{{chapter.button2txt}}</button>
+</div>

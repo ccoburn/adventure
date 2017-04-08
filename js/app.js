@@ -9,10 +9,10 @@ angular.module('app', ['ui.router'])
     templateUrl: 'home.html',
     controller: 'homeCtrl'
   })
-  .state('none', {
-    url: "/none/:id",
-    templateUrl: './views/none.html',
-    controller: 'noOptionsCtrl'
+  .state('one', {
+    url: "/one/:id",
+    templateUrl: './views/one.html',
+    controller: 'oneOptionCtrl'
   })
   .state('two', {
     url: "/two/:id",
@@ -25,7 +25,7 @@ angular.module('app', ['ui.router'])
     controller: 'threeOptionsCtrl'
   })
   .state('fight', {
-    url: '/fight',
+    url: '/fight/:id',
     templateUrl: './views/fight.html',
     controller: 'fightCtrl'
   })

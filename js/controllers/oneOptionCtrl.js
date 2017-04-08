@@ -1,4 +1,4 @@
-angular.module('app').controller('noOptionsCtrl', function($scope, storyService, $stateParams){
+angular.module('app').controller('oneOptionCtrl', function($scope, storyService, $stateParams){
 
   $scope.getChapters = function() {
     for (var i = 0;i<storyService.chapters.length;i++) {

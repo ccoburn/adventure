@@ -2430,7 +2430,24 @@ button:hover {
 .choices-box {
   display: flex;
   justify-content: space-around;
-  margin-top: 15px; }
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.d20-box {
+  background: url("../img/d20.png");
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px; }
+
+.fight-button {
+  margin-bottom: 15px; }
+
+.the20 {
+  color: white; }
 
 /*! * * * * * * * * * * * * * * * * * * * *  CSShake :: Package
   v1.5.0

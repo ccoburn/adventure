@@ -1,3 +1,10 @@
-<h2>Roll</h2>
-<button type="button" name="button" ng-click="roll20(); the20=true">roll D20</button>
-<h2 ng-show="the20">{{d20Result}}</h2>
+<div ng-show="dice">
+
+<div class="d20-box" ng-class="{'animated rotateIn': spin}">
+  <h2 class="the20" ng-show="the20">{{d20Result}}</h2>
+</div>
+<h1>{{special}}</h1>
+
+
+
+</div>
