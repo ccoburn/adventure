@@ -1,8 +1,27 @@
-<h1>{{chapter.character}}</h1>
-<p>{{chapter.story1}}</p>
-<p>{{chapter.story2}}</p>
-<div class="choices-box">
+<section class="wrapper">
+<div class="{{chapter.character}}">
+  <div class="transbox">
+    <h1 class="title">The Evil Underneath</h1>
+  </div>
+</div>
+
+
+
+<section class="story-block">
+  <h1 class="title2">The Evil Underneath</h1>
+
+  <div class="story">
+
+<p class="animated slideInRight">{{chapter.story1}}</p>
+<br>
+<p class="animated slideInLeft">{{chapter.story2}}</p>
+
+</div>
+
+<div class="choices-box animated slideInUp">
   <button type="button" name="button" ui-sref='{{chapter.button1lnk}}'>{{chapter.button1txt}}</button>
   <button type="button" name="button" ui-sref='{{chapter.button2lnk}}'>{{chapter.button2txt}}</button>
   <button type="button" name="button" ui-sref='{{chapter.button3lnk}}'>{{chapter.button3txt}}</button>
 </div>
+</section>
+</section>

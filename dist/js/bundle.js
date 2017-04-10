@@ -31,20 +31,31 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
 angular.module('app').controller('homeCtrl', function ($scope) {
 
   $scope.earthquake = function () {
-    document.querySelector('body').classList.add('shake-chunk');
+    document.querySelector('.story-block').classList.add('shake-chunk');
   };
 });
 'use strict';
 
 angular.module('app').controller('fightCtrl', function ($scope, monsterService, rollService, storyService, classService, $stateParams) {
 
+  $scope.showSpells = function () {
+    if ($scope.stats.character === "Wizard") {
+      $scope.wizardSpells = true;
+    }
+    if ($scope.stats.character === "Cleric") {
+      $scope.clericSpells = true;
+    }
+  };
+
   // rolls
   $scope.roll20You = function () {
     $scope.d20Result = rollService.roll20();
     if ($scope.d20Result == 20) {
       $scope.special = "Critical Hit!";
+      $scope.specialShow = true;
     } else if ($scope.d20Result == 1) {
       $scope.special = "Pathetic!";
+      $scope.specialShow = true;
     } else {
       $scope.special = "";
     }
@@ -113,7 +124,7 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
     }
     if (swing >= $scope.stats.armor_class) {
       $scope.stats.hit_points = $scope.stats.hit_points - hit;
-      $scope.result1 = "You were hit for " + hit + " points.";
+      $scope.result1 = "The " + $scope.monster.name + " hit you for " + hit + " points.";
       $scope.turn = "Your turn";
     }
     if (swing < $scope.stats.armor_class) {
@@ -121,12 +132,13 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
       $scope.turn = "Your turn";
     }
     if ($scope.stats.hit_points <= 0) {
-      $scope.result2 = "You died";
+      $scope.youDied = "You died";
       $scope.over = true;
       $scope.died = true;
       $scope.stats.hit_points = 0;
+      $scope.turn = "";
+      $scope.theEnd = true;
     }
-    $scope.turn = "";
   };
 
   $scope.fightSp1 = function () {
@@ -136,7 +148,7 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
       hit = hit * 2;
     }
     if (cast - 5 === 1) {
-      $scope.result2 = "You " + $scope.monster.name + " missed!";
+      $scope.result2 = "You missed!";
     }
     if (cast >= $scope.monster.armor_class) {
       $scope.monster.hit_points = $scope.monster.hit_points - hit;
@@ -149,10 +161,12 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
       $scope.fight();
     }
     if ($scope.monster.hit_points <= 0) {
-      $scope.result2 = "You killed the " + $scope.monster.name;
+      $scope.youWon = "You killed the " + $scope.monster.name;
       $scope.over = true;
       $scope.won = true;
       $scope.monster.hit_points = 0;
+      $scope.turn = "";
+      $scope.theEnd = true;
     }
   };
 
@@ -163,7 +177,7 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
       hit = hit * 2;
     }
     if (cast - 5 === 1) {
-      $scope.result2 = "You " + $scope.monster.name + " missed!";
+      $scope.result2 = "You missed!";
     }
     if (cast >= $scope.monster.armor_class) {
       $scope.monster.hit_points = $scope.monster.hit_points - hit;
@@ -176,10 +190,12 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
       $scope.fight();
     }
     if ($scope.monster.hit_points <= 0) {
-      $scope.result2 = "You killed the " + $scope.monster.name;
+      $scope.youWon = "You killed the " + $scope.monster.name;
       $scope.over = true;
       $scope.won = true;
       $scope.monster.hit_points = 0;
+      $scope.turn = "";
+      $scope.theEnd = true;
     }
   };
 
@@ -190,7 +206,7 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
       hit = hit * 2;
     }
     if (cast - 5 === 1) {
-      $scope.result2 = "You " + $scope.monster.name + " missed!";
+      $scope.result2 = "You missed!";
     }
     if (cast >= $scope.monster.armor_class) {
       $scope.monster.hit_points = $scope.monster.hit_points - hit;
@@ -203,10 +219,12 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
       $scope.fight();
     }
     if ($scope.monster.hit_points <= 0) {
-      $scope.result2 = "You killed the " + $scope.monster.name;
+      $scope.youWon = "You killed the " + $scope.monster.name;
       $scope.over = true;
       $scope.won = true;
       $scope.monster.hit_points = 0;
+      $scope.turn = "";
+      $scope.theEnd = true;
     }
   };
 
@@ -483,25 +501,25 @@ angular.module('app').service('storyService', function () {
   this.chapters = [{
     id: 'c1_3o',
     character: 'Cleric',
-    story1: "This is cleric story paragraph one.",
-    story2: "This is cleric story paragraph two.",
+    story1: "The mountain wind chills your bones as you emerge from the Temple of Talos and you gather your robes around you. Two years have passed quickly and you must return in haste to your village. Talos has made known to you his pleasure in your service and has granted you a portion of his power. Whatever is coming threatens his hold on this part of the world as well as your people’s.",
+    story2: "After making your way down the well-worn trail to the base of the mountain, you arrive at a crossroads. Straight ahead is a forest. The trees are thick and the path is narrow. Rumors say travelers have disappeared inside, but it offers the fastest walking route north. To the right is a wide road around the forest. West leads to a village where you can arrange passage on a ship. This may see you to your village the soonest, but the ocean can be dangerous. Where will you go?",
     sideimg: '',
     topimg: '',
-    button1txt: 'option 1',
-    button2txt: 'option 2',
-    button3txt: 'option 3',
+    button1txt: 'The forest sounds nice',
+    button2txt: 'A well-worn road offers the safest bet',
+    button3txt: 'Time to set sail. No time for walking',
     button1lnk: "two({id: 'c2a_2o'})",
     button2lnk: "two({id: 'c2b_2o'})",
     button3lnk: "two({id: 'c2c_2o'})"
   }, {
     id: 'c2a_2o',
     character: 'Cleric',
-    story1: "This is cleric story paragraph one.",
-    story2: "This is cleric story paragraph two.",
+    story1: "You have been walking warily through the forest for what seems like hours. Paths have split and converged several times and you have long since lost track of which direction is north. You are lost. You rest on a boulder to think, pray, and eat. As you are bringing out some bread and cheese, you hear a rustling in a nearby thicket.",
+    story2: "Your instincts say to run, but your curiosity begs to you stay.",
     sideimg: '',
     topimg: '',
-    button1txt: 'option 1',
-    button2txt: 'option 2',
+    button1txt: 'Get away as fast as you can',
+    button2txt: 'Stay and see what is coming',
     button3txt: 'option 3',
     button1lnk: "one({id: 'c3a_1o'})",
     button2lnk: "fight({id: 'c3b_f'})",
@@ -535,8 +553,9 @@ angular.module('app').service('storyService', function () {
   }, {
     id: 'c3a_1o',
     character: 'Cleric',
-    story1: "This is cleric story paragraph one.",
-    story2: "This is cleric story paragraph two.",
+    story1: "Running, panting, tripping, you race through the forest. The rustling hasn’t stopped. In fact, it’s increased. Calling on Talos, you prepare a spell and turn just in time to see the hobgoblin slice your knees. Your spell is cut short and your life is as well. The creature gurgles in what sounds like laughter as more emerge from behind trees.",
+    story2: "As the world fades to black, you feel a rumbling in the back of your mind. Talos is displeased.",
+    died: "You have died",
     sideimg: '',
     topimg: '',
     button1txt: 'Start Over',
@@ -548,12 +567,12 @@ angular.module('app').service('storyService', function () {
   }, {
     id: 'c3b_f',
     character: 'Cleric',
-    story1: "This is cleric story paragraph one.",
-    story2: "This is cleric story paragraph two.",
+    story1: "After laying waste to the creature, you notice tracks. Following the tracks may not be the wisest thing to do, but you are running out of options. The tracks lead off the path. Do you pray for direction or follow the tracks? Talos may be displeased if you call on him too often for things like directions.",
+    story2: "",
     sideimg: '',
     topimg: '',
-    button1txt: 'option 1',
-    button2txt: 'option 2',
+    button1txt: 'Follow the tracks',
+    button2txt: 'Pray for guidance',
     button3txt: 'option 3',
     button1lnk: "one({id: 'c4a_1o'})",
     button2lnk: "one({id: 'c4b_1o'})",
@@ -613,11 +632,11 @@ angular.module('app').service('storyService', function () {
   }, {
     id: 'c4a_1o',
     character: 'Cleric',
-    story1: "This is cleric story paragraph one.",
-    story2: "This is cleric story paragraph two.",
+    story1: "You carefully follow the creature’s tracks until you come to the edges of what looks like a crude camp. Goblins, hobgoblins, and other creatures roam about and fight for food. You aren’t getting past them, and even if you could, you would still be lost. Perhaps through intuition, perhaps through divine inspiration, you come up with a plan.",
+    story2: "Calling on Talos, you summon pealing thunder and a bolt of lightning that strikes a tree in the center of the camp, lighting the tree nearby encampments on fire. The creatures flee. You follow. It’s not long before they bolt out of the forest, bellowing their guttural screams. You wait for them to disperse and exit yourself. It’s dark, but you are finally able to get your bearings with a quick look at the stars. You are close now. Through some miracle, you have made your way north and the village should be just over the next ridge. The forest placed you much closer than it should have. Strange.",
     sideimg: '',
     topimg: '',
-    button1txt: 'option 1',
+    button1txt: 'Almost home. Time to be hero.',
     button2txt: 'option 2',
     button3txt: 'option 3',
     button1lnk: "three({id: 'c5a_3o'})",
@@ -626,11 +645,11 @@ angular.module('app').service('storyService', function () {
   }, {
     id: 'c4b_1o',
     character: 'Cleric',
-    story1: "This is cleric story paragraph one.",
-    story2: "This is cleric story paragraph two.",
+    story1: "As you call to Talos in supplication, you sense his frustration, but also his need for urgency. In this time of need, he grants you with a power not yet bestowed upon you and it makes you nervous. He wants you to speak with the dead.",
+    story2: "The spell is successful and the creature you have just slain begins speaking in words you can understand. You demand to know the way out of the forest and it is forced to comply. Shuddering, you memorize the instructions relayed from the corpse and quickly proceed out of the forest. As you exit, you realize that your village is close, most likely, just over the next ridge, though by all accounts you should still days away.  No matter. Nothing to do but move forward.",
     sideimg: '',
     topimg: '',
-    button1txt: 'option 1',
+    button1txt: 'Head to the village',
     button2txt: 'option 2',
     button3txt: 'option 3',
     button1lnk: "three({id: 'c5a_3o'})",
@@ -1272,7 +1291,8 @@ angular.module('app').service('storyService', function () {
     button3txt: 'option 3',
     button1lnk: "two({id: 'w2a_2o'})",
     button2lnk: "two({id: 'w2b_2o'})",
-    button3lnk: "two({id: 'w2c_2o'})"
+    button3lnk: "two({id: 'w2c_2o'})",
+    bar: "wizard-bar"
   }, {
     id: 'w2a_2o',
     character: 'Wizard',

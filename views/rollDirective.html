@@ -1,9 +1,9 @@
-<div ng-show="dice">
+<div class="roll-dir-box" ng-show="dice" >
 
-<div class="d20-box" ng-class="{'animated rotateIn': spin}">
+<div class="d20-box" ng-hide="dice2" ng-class="{'animated rotateIn': spin}">
   <h2 class="the20" ng-show="the20">{{d20Result}}</h2>
 </div>
-<h1>{{special}}</h1>
+<h1 class="fight-name animated flash" ng-show="specialShow">{{special}}</h1>
 
 
 

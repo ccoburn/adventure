@@ -1,13 +1,23 @@
 angular.module('app').controller('fightCtrl', function($scope, monsterService, rollService, storyService, classService, $stateParams) {
 
+$scope.showSpells = function() {
+  if ($scope.stats.character === "Wizard") {
+    $scope.wizardSpells = true;
+  }
+  if ($scope.stats.character === "Cleric") {
+    $scope.clericSpells = true;
+  }
+}
 
 // rolls
 $scope.roll20You = function() {
   $scope.d20Result = rollService.roll20();
   if ($scope.d20Result == 20) {
     $scope.special = "Critical Hit!";
+    $scope.specialShow = true;
   } else if ($scope.d20Result == 1) {
     $scope.special = "Pathetic!";
+    $scope.specialShow = true;
   } else {
   $scope.special = "";
 }
@@ -79,7 +89,7 @@ $scope.fight = function() {
   }
   if (swing >= $scope.stats.armor_class) {
     $scope.stats.hit_points = $scope.stats.hit_points - hit;
-    $scope.result1 = "You were hit for " + hit + " points.";
+    $scope.result1 = "The " + $scope.monster.name + " hit you for " + hit + " points.";
     $scope.turn = "Your turn";
   }
   if (swing < $scope.stats.armor_class) {
@@ -87,12 +97,15 @@ $scope.fight = function() {
     $scope.turn = "Your turn";
   }
   if ($scope.stats.hit_points <= 0) {
-    $scope.result2 = "You died";
+    $scope.youDied = "You died";
     $scope.over = true;
     $scope.died = true;
     $scope.stats.hit_points = 0;
+    $scope.turn = "";
+    $scope.theEnd= true
+
   }
-  $scope.turn = ""
+
 }
 
 $scope.fightSp1 = function() {
@@ -102,7 +115,7 @@ $scope.fightSp1 = function() {
     hit = hit * 2;
   }
   if (cast - 5 === 1) {
-    $scope.result2 = "You " + $scope.monster.name + " missed!";
+    $scope.result2 = "You missed!";
   }
   if (cast >= $scope.monster.armor_class) {
     $scope.monster.hit_points = $scope.monster.hit_points - hit;
@@ -115,11 +128,14 @@ $scope.fightSp1 = function() {
     $scope.fight();
   }
   if ($scope.monster.hit_points <= 0) {
-    $scope.result2 = "You killed the " + $scope.monster.name;
+    $scope.youWon = "You killed the " + $scope.monster.name;
     $scope.over = true;
     $scope.won = true;
     $scope.monster.hit_points = 0;
+    $scope.turn = ""
+    $scope.theEnd= true
   }
+
 }
 
 $scope.fightSp2 = function() {
@@ -129,7 +145,7 @@ $scope.fightSp2 = function() {
     hit = hit * 2;
   }
   if (cast - 5 === 1) {
-    $scope.result2 = "You " + $scope.monster.name + " missed!";
+    $scope.result2 = "You missed!";
   }
   if (cast >= $scope.monster.armor_class) {
     $scope.monster.hit_points = $scope.monster.hit_points - hit;
@@ -142,10 +158,12 @@ if ($scope.monster.hit_points > 0 ) {
   $scope.fight();
 }
 if ($scope.monster.hit_points <= 0) {
-  $scope.result2 = "You killed the " + $scope.monster.name;
+  $scope.youWon = "You killed the " + $scope.monster.name;
   $scope.over = true;
   $scope.won= true;
   $scope.monster.hit_points = 0;
+  $scope.turn = ""
+  $scope.theEnd= true
 }
 }
 
@@ -156,7 +174,7 @@ $scope.fightSp3 = function() {
     hit = hit * 2;
   }
   if (cast - 5 === 1) {
-    $scope.result2 = "You " + $scope.monster.name + " missed!";
+    $scope.result2 = "You missed!";
   }
   if (cast >= $scope.monster.armor_class) {
     $scope.monster.hit_points = $scope.monster.hit_points - hit;
@@ -169,10 +187,12 @@ if ($scope.monster.hit_points > 0 ) {
   $scope.fight();
 }
 if ($scope.monster.hit_points <= 0) {
-  $scope.result2 = "You killed the " + $scope.monster.name;
+  $scope.youWon = "You killed the " + $scope.monster.name;
   $scope.over = true;
   $scope.won = true;
   $scope.monster.hit_points = 0;
+  $scope.turn = ""
+  $scope.theEnd= true
 }
 }
 

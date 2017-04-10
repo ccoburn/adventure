@@ -2364,11 +2364,82 @@
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
+@import url("https://fonts.googleapis.com/css?family=Macondo|Marcellus+SC");
 body {
-  padding: 20px 100px;
+  background: url("../img/parchment-paper.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; }
+
+.Wizard {
+  width: 100%;
+  height: 100px;
+  background: url("../img/sparks.jpg");
+  background-size: 770px 520px;
+  background-repeat: no-repeat;
+  background-position: 0% 83%;
   display: flex;
-  flex-direction: column;
-  background: #8f8f8d; }
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  box-shadow: 0px 5px 5px black; }
+
+.Cleric {
+  width: 100%;
+  height: 100px;
+  background: url("../img/sun.jpg");
+  background-size: 770px 520px;
+  background-repeat: no-repeat;
+  background-position: 0% 46%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  box-shadow: 0px 5px 5px black; }
+
+.village-box {
+  width: 100%;
+  height: 100px;
+  background: url("../img/villagejpg.jpg");
+  background-size: 770px 520px;
+  background-repeat: no-repeat;
+  background-position: 0% 74%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  box-shadow: 0px 5px 5px black; }
+
+.fight {
+  width: 100%;
+  height: 100px;
+  background: url("../img/fight.jpg");
+  background-size: 705px 360px;
+  background-repeat: no-repeat;
+  background-position: 40% 63%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  box-shadow: 0px 5px 5px black; }
+
+.transbox {
+  margin: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px; }
+
+.title {
+  font-size: 30px;
+  text-align: center;
+  font-family: 'Marcellus SC', serif;
+  color: white; }
+
+.title2 {
+  font-size: 60px;
+  display: none;
+  font-family: 'Marcellus SC', serif;
+  margin-bottom: 50px;
+  color: #382800; }
 
 button {
   margin-top: 10px;
@@ -2391,53 +2462,112 @@ button:hover {
   justify-content: center;
   margin-bottom: 30px; }
 
-.village-box {
-  width: 75%;
-  height: 300px;
-  background: url("../Village.jpg") center no-repeat;
-  background-size: cover;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px black; }
-
-.title {
-  font-size: 85px;
-  text-align: center;
-  margin-top: 70px;
-  margin-bottom: 10px; }
-
 .sub-title {
   font-size: 45px;
   text-align: center; }
 
 .wrapper {
   width: 100%;
-  height: 100vh;
+  height: 100vh; }
+
+#text {
+  font-family: "Macondo", cursive;
+  color: #382800; }
+
+.story {
+  width: 70%;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 15px 20px 0px 20px;
+  font-family: "Macondo", cursive;
+  color: #382800; }
+
+.story-block {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center; }
 
-.story {
-  width: 70%;
-  margin-bottom: 15px;
-  font-size: 20px;
-  line-height: 1.5; }
-
-.storyb {
-  margin-bottom: 15px;
-  font-size: 20px;
-  line-height: 1.5; }
-
 .choices-box {
   display: flex;
-  justify-content: space-around;
+  width: 70%;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 30px; }
+
+.spell-choices-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 15px;
   margin-bottom: 15px; }
+
+.fight-container {
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  height: 276px;
+  margin-bottom: 20px; }
+
+.fight-stat-box {
+  border: 5px solid #382800;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #382800; }
+
+.results-box {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  color: #382800; }
+
+.results-box2 {
+  width: 36%; }
+
+.end {
+  width: 350px;
+  font-family: "Macondo", cursive;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0px;
+  color: #382800; }
+
+.fight-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  color: #382800; }
+
+.fight-name {
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: "Macondo", cursive;
+  color: #382800; }
+
+.fight-stats {
+  font-size: 15px;
+  font-family: "Macondo", cursive;
+  color: #382800; }
+
+.fight-hp-num {
+  font-size: 36px;
+  font-family: "Macondo", cursive;
+  color: #382800; }
+
+.small-margin {
+  margin-bottom: 10px; }
 
 .d20-box {
   background: url("../img/d20.png");
   background-size: contain;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2448,6 +2578,65 @@ button:hover {
 
 .the20 {
   color: white; }
+
+@media (min-width: 700px) {
+  .Wizard {
+    height: 150px;
+    background-size: 1105px 720px; }
+  .Cleric {
+    height: 150px;
+    background-size: 1105px 720px; }
+  .village-box {
+    height: 150px;
+    background-size: 1105px 720px; }
+  .fight {
+    height: 150px;
+    background-size: 1105px 720px; }
+  .title {
+    font-size: 75px; } }
+
+@media (min-width: 1100px) {
+  body {
+    padding-top: 25px; }
+  .Wizard {
+    height: 100vh;
+    width: 15%;
+    background-size: cover;
+    box-shadow: 5px 0px 5px black;
+    position: fixed; }
+  .Cleric {
+    height: 100vh;
+    width: 15%;
+    background-size: cover;
+    background-position: 36% 0%;
+    box-shadow: 5px 0px 5px black;
+    position: fixed; }
+  .village-box {
+    height: 100vh;
+    width: 15%;
+    background-size: cover;
+    background-position: 77% 0%;
+    box-shadow: 5px 0px 5px black;
+    position: fixed; }
+  .fight {
+    height: 100vh;
+    width: 15%;
+    background-size: cover;
+    background-position: 52% 0%;
+    box-shadow: 5px 0px 5px black;
+    position: fixed; }
+  .wrapper {
+    display: flex; }
+  .story-block {
+    margin-left: 200px;
+    width: 100%; }
+  .title {
+    display: none; }
+  .title2 {
+    display: block; }
+  .choices-box {
+    justify-content: space-between;
+    flex-direction: row; } }
 
 /*! * * * * * * * * * * * * * * * * * * * *  CSShake :: Package
   v1.5.0
@@ -3362,7 +3551,7 @@ button:hover {
 .shake-chunk {
   animation-name: shake-chunk;
   animation-duration: 6s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 2; }
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1; }
 
 /*# sourceMappingURL=maps/styles.css.map */

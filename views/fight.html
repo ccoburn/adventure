@@ -1,42 +1,82 @@
-<h1>{{chapter.character}} {{stats.character}}</h1>
-
-<h1>You are attacked by a {{monster.name}}</h1>
-<h3>Armor: {{monster.armor_class}}</h3>
-<h3>Strength: {{monster.strength}}</h3>
-<h3>Hit Points: {{monster.hit_points}}</h3>
-<h3>Dexterity: {{monster.dexterity}}</h3>
-<h3>Hit Dice: {{monster.hit_dice}}</h3>
-<br>
-<br>
-<h1>{{stats.character}}</h1>
-<h3>AC: {{stats.armor_class}}</h3>
-<h3>Hit Points: {{stats.hit_points}}</h3>
-<button type="button" name="button" ng-model="fightBttn" ng-disabled="fightBttn" ng-click="fight(); spells=true; fightBttn=true">Start fight</button>
-<h1>Here we go</h1>
-<br>
-<h3>{{result1}}</h3>
-<h3>{{turn}}</h3>
-
-<br>
-<br>
-<div class="choices-box" ng-show="spells">
-  <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); spin=true; fightSp1(); the20=true; once=true; dice=true">{{stats.spell1}}</button>
-  <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp2(); the20=true; spin=true; once=true; dice=true">{{stats.spell2}}</button>
-  <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp3(); the20=true; spin=true; once=true; dice=true">{{stats.spell3}}</button>
+<section class="wrapper">
+<div class="fight">
+  <div class="transbox">
+    <h1 class="title">Prepare yourself!</h1>
+  </div>
 </div>
 
+
+<section class="story-block">
+  <h1 class="title2">Prepare yourself!</h1>
+<h1 class="fight-name animated zoomInLeft ">You are attacked by a {{monster.name}}!</h1>
+<button type="button" name="button" ng-model="fightBttn" class="small-margin" ng-disabled="fightBttn" ng-click="fight(); showSpells(); fightBttn=true; showResults1=true">Start fight</button>
+<div class="results-box">
+<div class="results-box2 animated zoomIn" ng-show="showResults1">
+  <h3 class="fight-stats small-margin">{{result1}}</h3>
+  <h3 class="fight-stats">{{turn}}</h3>
+</div>
 <roll-directive></roll-directive>
-
-<h1>{{result2}}</h1>
-<br>
-<br>
-<h2 ng-show="won">You heal your wounds and rest from the battle.</h2>
-<div class="choices-box">
-  <button type="button" name="button" ui-sref='home' ng-show="died">Start Over</button>
-  <button type="button" name="button" ng-show="won" ng-click="options(); oneOption=true">Continue Journey</button>
+<div class="results-box2 animated zoomIn" ng-show="showResults2">
+  <h1 class="fight-stats">{{result2}}</h1>
 </div>
 
-<div class="choices-box">
-  <button type="button" name="button" ui-sref='{{chapter.button1lnk}}' ng-show="oneOption">{{chapter.button1txt}}</button>
-<button type="button" name="button" ui-sref='{{chapter.button2lnk}}' ng-show="twoOptions">{{chapter.button2txt}}</button>
 </div>
+<div class="end animated rotateInDownLeft" ng-show="theEnd">
+  <h1>{{youDied}}</h1>
+  <h1>{{youWon}}</h1>
+
+</div>
+<div class="fight-container animated zoomInRight">
+
+<div class="fight-stat-box">
+  <h1 class="fight-name small-margin">{{monster.name}}</h1>
+  <h3 class="fight-stats small-margin">Hit Points</h3>
+  <h1 class="fight-hp-num small-margin">{{monster.hit_points}}</h1>
+  <h3 class="fight-stats small-margin">Strength: {{monster.strength}}</h3>
+  <h3 class="fight-stats small-margin">Armor: {{monster.armor_class}}</h3>
+</div>
+<div class="fight-stat-box">
+  <h1 class="fight-name small-margin">{{stats.character}}</h1>
+  <h3 class="fight-stats small-margin">Hit Points</h3>
+  <h1 class="fight-hp-num small-margin">{{stats.hit_points}}</h1>
+  <h3 class="fight-stats small-margin">Pick a spell</h3>
+  <div class="spell-choices-box small-margin" ng-show="clericSpells">
+    <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); spin=true; fightSp1(); the20=true; once=true; dice=true; showResults2=true">{{stats.spell1}}</button>
+    <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp2(); the20=true; spin=true; once=true; dice=true; showResults2=true">{{stats.spell2}}</button>
+    <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp3(); the20=true; spin=true; once=true; dice=true; showResults2=true">{{stats.spell3}}</button>
+  </div>
+  <div class="spell-choices-box margin-small" ng-show="wizardSpells">
+    <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); spin=true; fightSp1(); the20=true; once=true; dice=true; showResults2=true">{{stats.spell1}}</button>
+    <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp2(); the20=true; spin=true; once=true; dice=true; showResults2=true">{{stats.spell2}}</button>
+    <button type="button" name="button" ng-disabled="over" ng-click=" roll20You(); fightSp3(); the20=true; spin=true; once=true; dice=true; showResults2=true">{{stats.spell3}}</button>
+  </div>
+
+</div>
+
+</div>
+<div class="fight-over">
+  <h2 class="fight-name" ng-show="won">You heal your wounds and rest from the battle.</h2>
+  <div class="choices-box">
+    <button type="button" name="button" ui-sref='home' ng-show="died">Start Over</button>
+    <button type="button" name="button" ng-show="won" ng-click="options(); oneOption=true; story=true;">Continue Journey</button>
+  </div>
+  <div class="story" ng-show="story">
+
+  <p class="animated slideInRight">{{chapter.story1}}</p>
+  <br>
+  <p class="animated slideInLeft">{{chapter.story2}}</p>
+  <br>
+  <h1 class="fight-hp-num animated slideInRight">{{chapter.died}}</h1>
+
+  </div>
+  <div class="choices-box">
+    <button type="button" name="button" ui-sref='{{chapter.button1lnk}}' ng-show="oneOption">{{chapter.button1txt}}</button>
+    <button type="button" name="button" ui-sref='{{chapter.button2lnk}}' ng-show="twoOptions">{{chapter.button2txt}}</button>
+  </div>
+
+</div>
+
+
+
+</section>
+</section>
