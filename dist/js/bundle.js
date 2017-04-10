@@ -36,6 +36,15 @@ angular.module('app').controller('homeCtrl', function ($scope) {
 });
 'use strict';
 
+angular.module('app').directive('rollDirective', function () {
+
+  return {
+    restrict: 'E',
+    templateUrl: './views/rollDirective.html'
+  };
+});
+'use strict';
+
 angular.module('app').controller('fightCtrl', function ($scope, monsterService, rollService, storyService, classService, $stateParams) {
 
   $scope.showSpells = function () {
@@ -275,15 +284,6 @@ angular.module('app').controller('twoOptionsCtrl', function ($scope, storyServic
     }
   };
   $scope.getChapters();
-});
-'use strict';
-
-angular.module('app').directive('rollDirective', function () {
-
-  return {
-    restrict: 'E',
-    templateUrl: './views/rollDirective.html'
-  };
 });
 'use strict';
 
