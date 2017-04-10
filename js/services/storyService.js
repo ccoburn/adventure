@@ -15,6 +15,7 @@ angular.module('app').service('storyService', function() {
       button2lnk: "two({id: 'c2b_2o'})",
       button3lnk: "two({id: 'c2c_2o'})"
     },
+    
     {
       id: 'c2a_2o',
       character: 'Cleric',
