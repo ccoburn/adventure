@@ -2400,7 +2400,7 @@ body {
 .village-box {
   width: 100%;
   height: 100px;
-  background: url("../img/villagejpg.jpg");
+  background: url("../img/village1.jpg");
   background-size: 770px 520px;
   background-repeat: no-repeat;
   background-position: 0% 74%;
@@ -2564,7 +2564,7 @@ button:hover {
   margin-bottom: 10px; }
 
 .d20-box {
-  background: url("../img/d20.png");
+  background: url("../img/d20a.png");
   background-size: contain;
   width: 60px;
   height: 60px;
