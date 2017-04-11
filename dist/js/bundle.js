@@ -28,24 +28,25 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
 });
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope) {
+angular.module('app').controller('homeCtrl', function ($scope, $location, $anchorScroll) {
 
-  $scope.earthquake = function () {
-    document.querySelector('.story-block').classList.add('shake-chunk');
-  };
+      $scope.earthquake = function () {
+            document.querySelector('.story-block').classList.add('shake-chunk');
+      };
+
+      $scope.toTop = function () {
+            $location.hash('top');
+            $anchorScroll();
+      };
 });
 'use strict';
 
-angular.module('app').directive('rollDirective', function () {
+angular.module('app').controller('fightCtrl', function ($scope, monsterService, rollService, storyService, classService, $stateParams, $location, $anchorScroll) {
 
-  return {
-    restrict: 'E',
-    templateUrl: './views/rollDirective.html'
+  $scope.toTop = function () {
+    $location.hash('top');
+    $anchorScroll();
   };
-});
-'use strict';
-
-angular.module('app').controller('fightCtrl', function ($scope, monsterService, rollService, storyService, classService, $stateParams) {
 
   $scope.showSpells = function () {
     if ($scope.stats.character === "Wizard") {
@@ -248,7 +249,7 @@ angular.module('app').controller('fightCtrl', function ($scope, monsterService, 
 });
 'use strict';
 
-angular.module('app').controller('oneOptionCtrl', function ($scope, storyService, $stateParams) {
+angular.module('app').controller('oneOptionCtrl', function ($scope, storyService, $stateParams, $location, $anchorScroll) {
 
   $scope.getChapters = function () {
     for (var i = 0; i < storyService.chapters.length; i++) {
@@ -258,10 +259,15 @@ angular.module('app').controller('oneOptionCtrl', function ($scope, storyService
     }
   };
   $scope.getChapters();
+
+  $scope.toTop = function () {
+    $location.hash('top');
+    $anchorScroll();
+  };
 });
 'use strict';
 
-angular.module('app').controller('threeOptionsCtrl', function ($scope, storyService, $stateParams) {
+angular.module('app').controller('threeOptionsCtrl', function ($scope, storyService, $stateParams, $location, $anchorScroll) {
 
   $scope.getChapters = function () {
     for (var i = 0; i < storyService.chapters.length; i++) {
@@ -271,10 +277,15 @@ angular.module('app').controller('threeOptionsCtrl', function ($scope, storyServ
     }
   };
   $scope.getChapters();
+
+  $scope.toTop = function () {
+    $location.hash('top');
+    $anchorScroll();
+  };
 });
 'use strict';
 
-angular.module('app').controller('twoOptionsCtrl', function ($scope, storyService, $stateParams) {
+angular.module('app').controller('twoOptionsCtrl', function ($scope, storyService, $stateParams, $location, $anchorScroll) {
 
   $scope.getChapters = function () {
     for (var i = 0; i < storyService.chapters.length; i++) {
@@ -284,6 +295,20 @@ angular.module('app').controller('twoOptionsCtrl', function ($scope, storyServic
     }
   };
   $scope.getChapters();
+
+  $scope.toTop = function () {
+    $location.hash('top');
+    $anchorScroll();
+  };
+});
+'use strict';
+
+angular.module('app').directive('rollDirective', function () {
+
+  return {
+    restrict: 'E',
+    templateUrl: './views/rollDirective.html'
+  };
 });
 'use strict';
 

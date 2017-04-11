@@ -1,4 +1,4 @@
-<section class="wrapper">
+<section id="top"class="wrapper">
 <div class="village-box">
   <div class="transbox">
     <h1 class="title">The Evil Underneath</h1>
@@ -37,8 +37,8 @@
 	<p>Master Perryl informs you that you have two options and urges you to choose wisely. Talos, god of storms, has made known to his devotees that he seeks a cleric at his temple south of your village. There you would learn to channel his power. The wizards at Bryce's school offered in their letter to train another champion in his stead. You would head east immediately. Two years is not long, but Master Perryl has faith in you. Where will you go?</p>
 
 	<div class="choices-box">
-		<button type="button" name="button" ui-sref="three({id: 'c1_3o'})">South to Talos's temple</button>
-		<button type="button" name="button" ui-sref="three({id: 'w1_3o'})">East to the wizards</button>
+		<button type="button" name="button" ui-sref="three({id: 'c1_3o'})" ng-click="toTop()">South to Talos's temple</button>
+		<button type="button" name="button" ui-sref="three({id: 'w1_3o'})" ng-click="toTop()">East to the wizards</button>
   </div>
 
 <br>

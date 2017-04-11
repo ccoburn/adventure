@@ -1,4 +1,4 @@
-<section class="wrapper">
+<section id="top" class="wrapper">
 <div class="{{chapter.character}}">
   <div class="transbox">
     <h1 class="title">The Evil Underneath</h1>
@@ -19,9 +19,9 @@
 </div>
 
 <div class="choices-box animated slideInUp">
-  <button type="button" name="button" ui-sref='{{chapter.button1lnk}}'>{{chapter.button1txt}}</button>
-  <button type="button" name="button" ui-sref='{{chapter.button2lnk}}'>{{chapter.button2txt}}</button>
-  <button type="button" name="button" ui-sref='{{chapter.button3lnk}}'>{{chapter.button3txt}}</button>
+  <button type="button" name="button" ui-sref='{{chapter.button1lnk}}' ng-click="toTop()">{{chapter.button1txt}}</button>
+  <button type="button" name="button" ui-sref='{{chapter.button2lnk}}' ng-click="toTop()">{{chapter.button2txt}}</button>
+  <button type="button" name="button" ui-sref='{{chapter.button3lnk}}' ng-click="toTop()">{{chapter.button3txt}}</button>
 </div>
 </section>
 </section>

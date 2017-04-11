@@ -1,4 +1,9 @@
-angular.module('app').controller('fightCtrl', function($scope, monsterService, rollService, storyService, classService, $stateParams) {
+angular.module('app').controller('fightCtrl', function($scope, monsterService, rollService, storyService, classService, $stateParams, $location, $anchorScroll) {
+
+  $scope.toTop = function() {
+        $location.hash('top');
+        $anchorScroll();
+      }
 
 $scope.showSpells = function() {
   if ($scope.stats.character === "Wizard") {

@@ -8,9 +8,9 @@
 
 <section class="story-block">
   <h1 class="title2">Prepare yourself!</h1>
-<h1 class="fight-name animated zoomInLeft ">You are attacked by a {{monster.name}}!</h1>
+<h1 class="fight-name animated zoomInLeft small-margin ">You are attacked by a {{monster.name}}!</h1>
 <button type="button" name="button" ng-model="fightBttn" class="small-margin" ng-disabled="fightBttn" ng-click="fight(); showSpells(); fightBttn=true; showResults1=true">Start fight</button>
-<div class="results-box">
+<div class="results-box small-margin">
 <div class="results-box2 animated zoomIn" ng-show="showResults1">
   <h3 class="fight-stats small-margin">{{result1}}</h3>
   <h3 class="fight-stats">{{turn}}</h3>
@@ -26,7 +26,7 @@
   <h1>{{youWon}}</h1>
 
 </div>
-<div class="fight-container animated zoomInRight">
+<div class="fight-container animated zoomInRight small-margin">
 
 <div class="fight-stat-box">
   <h1 class="fight-name small-margin">{{monster.name}}</h1>
@@ -60,18 +60,16 @@
     <button type="button" name="button" ui-sref='home' ng-show="died">Start Over</button>
     <button type="button" name="button" ng-show="won" ng-click="options(); oneOption=true; story=true;">Continue Journey</button>
   </div>
-  <div class="story" ng-show="story">
+  <div class="story2" ng-show="story">
 
   <p class="animated slideInRight">{{chapter.story1}}</p>
-  <br>
-  <p class="animated slideInLeft">{{chapter.story2}}</p>
-  <br>
+
   <h1 class="fight-hp-num animated slideInRight">{{chapter.died}}</h1>
 
   </div>
-  <div class="choices-box">
-    <button type="button" name="button" ui-sref='{{chapter.button1lnk}}' ng-show="oneOption">{{chapter.button1txt}}</button>
-    <button type="button" name="button" ui-sref='{{chapter.button2lnk}}' ng-show="twoOptions">{{chapter.button2txt}}</button>
+  <div class="choices-box-fight">
+    <button type="button" name="button" ui-sref='{{chapter.button1lnk}}' ng-show="oneOption" ng-click="toTop()">{{chapter.button1txt}}</button>
+    <button type="button" name="button" ui-sref='{{chapter.button2lnk}}' ng-show="twoOptions" ng-click="toTop()">{{chapter.button2txt}}</button>
   </div>
 
 </div>

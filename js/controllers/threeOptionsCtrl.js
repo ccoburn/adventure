@@ -1,4 +1,4 @@
-angular.module('app').controller('threeOptionsCtrl', function($scope, storyService, $stateParams){
+angular.module('app').controller('threeOptionsCtrl', function($scope, storyService, $stateParams, $location, $anchorScroll){
 
 $scope.getChapters = function() {
   for (var i = 0;i<storyService.chapters.length;i++) {
@@ -8,4 +8,9 @@ $scope.getChapters = function() {
   }
 }
   $scope.getChapters()
+
+  $scope.toTop = function() {
+        $location.hash('top');
+        $anchorScroll();
+      }
 })
